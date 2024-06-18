@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Install sonar-scanner and build-wrapper
-        uses: SonarSource/sonarcloud-github-c-cpp@vp/linuxARM64_downgraded_scanner
+        uses: SonarSource/sonarcloud-github-c-cpp@vp/supportLinux_ARM64
       - name: Run build-wrapper
         run: |
           autoreconf --install
