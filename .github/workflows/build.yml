@@ -19,10 +19,11 @@ jobs:
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install sonar-scanner and build-wrapper
+        id: sonar-setup
         uses: SonarSource/sonarcloud-github-c-cpp@vp/supportLinux_ARM64
       - name: Run build-wrapper
         env:
-          BW: ${{ steps.install-sonar-scanner-and-build-wrapper.build-wrapper-binary }}
+          BW: ${{ steps.sonar-setup.outputs.build-wrapper-binary }}
         run: |
           autoreconf --install
           ./configure
