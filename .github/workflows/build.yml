@@ -22,9 +22,16 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@vp/supportLinux_ARM64
       - name: Run build-wrapper
         run: |
+          bw () {
+            if [[ ${ARCH} == "X64" ]]; then
+              build-wrapper-linux-x86-64 $@
+            else
+              build-wrapper-linux-aarch64 $@
+            fi
+          }
           autoreconf --install
           ./configure
-          build-wrapper-linux-aarch64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make clean all
+          bw --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make clean all
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
