@@ -22,7 +22,7 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@vp/supportLinux_ARM64
       - name: Run build-wrapper
         env:
-          BW: ${{ steps.run-action.outputs.build-wrapper-binary }}
+          BW: ${{ steps.install-sonar-scanner-and-build-wrapper.build-wrapper-binary }}
         run: |
           autoreconf --install
           ./configure
