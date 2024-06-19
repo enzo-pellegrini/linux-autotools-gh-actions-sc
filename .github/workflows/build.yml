@@ -23,7 +23,7 @@ jobs:
       - name: Run build-wrapper
         run: |
           bw () {
-            if [[ ${ARCH} == "X64" ]]; then
+            if [[ ${{ runner.arch } == "X64" ]]; then
               build-wrapper-linux-x86-64 $@
             else
               build-wrapper-linux-aarch64 $@
