@@ -10,7 +10,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        tags: [ARM64, X64]
+        tags: [ARM64]
     runs-on: [self-hosted, '${{ matrix.tags }}']
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install sonar-scanner and build-wrapper
         id: sonar-setup
-        uses: SonarSource/sonarcloud-github-c-cpp@vp/supportLinux_ARM64
+        uses: SonarSource/sonarcloud-github-c-cpp@vp/nativeCli
       - name: Run build-wrapper
         env:
           BW: ${{ steps.sonar-setup.outputs.build-wrapper-binary }}
