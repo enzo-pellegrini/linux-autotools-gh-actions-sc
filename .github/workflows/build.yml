@@ -44,7 +44,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   linux_x64:
-    name: Build and analyze
+    name: Build and analyze X64
     runs-on: ubuntu-latest
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
@@ -68,7 +68,7 @@ jobs:
 
 
   linux-arm64:
-    name: Build and analyze
+    name: Build and analyze ARM64
     runs-on: [self-hosted, ARM64]
     env:
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
